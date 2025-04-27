@@ -88,7 +88,7 @@ else:
     st.info("✅ No Red Flags Detected.")
 
 
-            except Exception as e:
+except Exception as e:
                 st.error(f"Error processing {uploaded_file.name}: {str(e)}")
     else:
         st.warning("Please upload files and enter your API key.")
