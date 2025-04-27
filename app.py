@@ -71,7 +71,7 @@ try:
 
 except Exception as e:
     st.error(f"An error occurred during AI summarization: {e}")
-                st.write(summary)
+                 
 
 # --- Red Flag Detection ---
 found_flags = []
