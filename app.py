@@ -64,14 +64,14 @@ try:
         temperature=0.5
     )
     summary = response.choices[0].message.content.strip()
-    
+
     # Display Summary
     st.success(f"Summary for {uploaded_file.name}:")
     st.write(summary)
 
 except Exception as e:
     st.error(f"An error occurred during AI summarization: {e}")
-                 
+
 
 # --- Red Flag Detection ---
 found_flags = []
@@ -88,9 +88,4 @@ else:
     st.info("✅ No Red Flags Detected.")
 
 
-except Exception as e:
-                st.error(f"Error processing {uploaded_file.name}: {str(e)}")
-    else:
-        st.warning("Please upload files and enter your API key.")
-
-
+ 
