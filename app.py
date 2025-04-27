@@ -51,25 +51,26 @@ if st.button("Analyze Calls"):
                 continue
 
             # --- AI Summarization ---
-            try:
-               client = openai.OpenAI()
+# --- AI Summarization ---
+try:
+    client = openai.OpenAI()
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a jail intelligence analyst who summarizes inmate phone calls for red flags and criminal activity."},
+            {"role": "user", "content": f"Summarize this jail call transcript:\n\n{call_text}"}
+        ],
+        max_tokens=250,
+        temperature=0.5
+    )
+    summary = response.choices[0].message.content.strip()
+    
+    # Display Summary
+    st.success(f"Summary for {uploaded_file.name}:")
+    st.write(summary)
 
-response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[
-        {"role": "system", "content": "You are a jail intelligence analyst who summarizes inmate phone calls for red flags and criminal activity."},
-        {"role": "user", "content": f"Summarize this jail call transcript:\n\n{call_text}"}
-    ],
-    max_tokens=250,
-    temperature=0.5
-)
-
-summary = response.choices[0].message.content.strip()
-
-                summary = response.choices[0].message['content'].strip()
-
-                # Display Summary
-                st.success(f"Summary for {uploaded_file.name}:")
+except Exception as e:
+    st.error(f"An error occurred during AI summarization: {e}")
                 st.write(summary)
 
 # --- Red Flag Detection ---
