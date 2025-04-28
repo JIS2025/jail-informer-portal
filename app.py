@@ -79,7 +79,7 @@ if 'call_text' in locals() and call_text:
     lowered_transcript = call_text.lower()
 
     for keyword in red_flag_keywords:
-    if keyword.lower() in lowered_transcript:
+     if keyword.lower() in lowered_transcript:
         found_flags.append(keyword)
 
 
