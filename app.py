@@ -75,8 +75,6 @@ else:
     st.warning("Please upload a call file and enter your OpenAI API Key before analyzing.")
 
 
-except Exception as e:
-    st.error(f"An error occurred during AI summarization: {e}")
 
 
 # --- Red Flag Detection ---
