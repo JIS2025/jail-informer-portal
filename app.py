@@ -53,7 +53,8 @@ if st.button("Analyze Calls"):
             # --- AI Summarization ---
 # --- AI Summarization ---
 try:
-    client = openai.OpenAI()
+    client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
