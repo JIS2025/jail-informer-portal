@@ -54,8 +54,10 @@ if st.button("Analyze Calls"):
 # --- AI Summarization ---
 
 if uploaded_files and api_key:
-    client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    uploaded_file = uploaded_files[0]
+    call_text = uploaded_file.read().decode("utf-8")
 
+    client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
@@ -73,7 +75,6 @@ if uploaded_files and api_key:
 
 else:
     st.warning("Please upload a call file and enter your OpenAI API Key before analyzing.")
-
 
 
 
