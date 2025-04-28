@@ -4,17 +4,11 @@ import os
 
 # --- Red Flag Keywords ---
 red_flag_keywords = [
-    "contraband",
-    "escape",
-    "threat",
-    "fight",
-    "gang",
-    "riot",
-    "weapon",
-    "overdose",
-    "drug deal",
-    "corrupt officer"
+    "drugs", "weapon", "escape", "stash", "package", "drop", "pickup",
+    "meet up", "under the bridge", "box", "spot", "discreet", "don't tell anyone",
+    "move it", "hide it", "get rid of", "kill", "threat", "contraband"
 ]
+
 
 
 # --- Page Configuration ---
@@ -85,10 +79,9 @@ if 'call_text' in locals() and call_text:
     lowered_transcript = call_text.lower()
 
     for keyword in red_flag_keywords:
-        if keyword in lowered_transcript:
-            found_flags.append(keyword)
-else:
-    st.warning("Skipping Red Flag Detection because no call transcript was available.")
+    if keyword.lower() in lowered_transcript:
+        found_flags.append(keyword)
+
 
 # Display Found Red Flags
 if found_flags:
