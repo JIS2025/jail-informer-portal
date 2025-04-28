@@ -53,7 +53,7 @@ if st.button("Analyze Calls"):
             # --- AI Summarization ---
 # --- AI Summarization ---
 
- if uploaded_files and api_key:
+if uploaded_files and api_key:
     client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
     response = client.chat.completions.create(
