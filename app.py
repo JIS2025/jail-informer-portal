@@ -79,11 +79,15 @@ else:
 
 # --- Red Flag Detection ---
 found_flags = []
-lowered_transcript = call_text.lower()
 
-for keyword in red_flag_keywords:
-    if keyword in lowered_transcript:
-        found_flags.append(keyword)
+if 'call_text' in locals() and call_text:
+    lowered_transcript = call_text.lower()
+
+    for keyword in red_flag_keywords:
+        if keyword in lowered_transcript:
+            found_flags.append(keyword)
+else:
+    st.warning("Skipping Red Flag Detection because no call transcript was available.")
 
 # Display Found Red Flags
 if found_flags:
