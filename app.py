@@ -52,7 +52,8 @@ if st.button("Analyze Calls"):
 
             # --- AI Summarization ---
 # --- AI Summarization ---
-try:
+
+ if uploaded_files and api_key:
     client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
     response = client.chat.completions.create(
@@ -69,6 +70,10 @@ try:
     # Display Summary
     st.success(f"Summary for {uploaded_file.name}:")
     st.write(summary)
+
+else:
+    st.warning("Please upload a call file and enter your OpenAI API Key before analyzing.")
+
 
 except Exception as e:
     st.error(f"An error occurred during AI summarization: {e}")
